@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html style="height: 100%; width:100%; overflow:hidden;">
+
+<head>
+    <!-- script src="/scripts/main.js"></script -->
+    <script src="/scripts/mean-shift.js"></script>
+    <script src="/scripts/libs/opencv.js"></script>
+    <script>
+        window.onload = function () {
+            //MyTest.init();
+            const mse = new MeanShiftExample("#main-canvas", "#canvas-wrapper");
+        }
+    </script>
+</head>
+
+<body style="margin:0; height: 100%; width:100%; overflow: hidden;">
+    <div id="canvas-wrapper" style="height: 100%; width: 100%;">
+        <canvas id="main-canvas" style="display: block;"></canvas>
+    </div>
+</body>
+
+</html>
