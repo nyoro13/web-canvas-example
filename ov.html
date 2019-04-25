@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html style="height: 100%; width:100%; overflow:hidden;">
+
+<head>
+  <!-- script src="/scripts/main.js"></script -->
+  <script src="/scripts/opencv-video.js"></script>
+  <script src="/scripts/libs/opencv.js"></script>
+  <script>
+    window.onload = function () {
+      const canvasId = 'main-canvas';
+      const canvas = document.querySelector('#' + canvasId);
+      canvas.width = canvas.parentElement.offsetWidth;
+      canvas.height = canvas.parentElement.offsetHeight;
+      const video = document.createElement('video');
+      video.width = canvas.width;
+      video.height = canvas.height;
+      navigator.mediaDevices.getUserMedia({
+        audio: false,
+        video: true
+      }).then(function (stream) {
+        video.srcObject = stream;
+        video.onloadedmetadata = function (e) {
+          video.play();
+          test(canvasId, video);
+        }
+      }).catch(console.error);
+    }
+
+    function test(canvasId, video) {
+      const ov = new OpenCVVideo(canvasId, video);
+      ov.startTick(90);
+    }
+  </script>
+</head>
+
+<body style="margin:0; height: 100%; width:100%; overflow: hidden;">
+  <div id="canvas-wrapper" style="height: 100%; width: 100%;">
+    <canvas id="main-canvas" style="display: block;"></canvas>
+  </div>
+</body>
+
+</html>
