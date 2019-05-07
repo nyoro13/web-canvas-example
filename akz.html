@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html style="height: 100%; width:100%; overflow:hidden;">
+
+<head>
+  <!-- script src="/scripts/main.js"></script -->
+  <script src="/scripts/util.js"></script>
+  <script src="/scripts/akz.js"></script>
+  <script src="/scripts/libs/opencv.js"></script>
+  <script>
+    const canvasId = 'main-canvas';
+    const imgId = 'img-sample';
+    let canvas = null;
+    window.onload = function () {
+      canvas = document.querySelector('#' + canvasId);
+      canvas.width = canvas.parentElement.offsetWidth;
+      canvas.height = canvas.parentElement.offsetHeight;
+      Util.startVideo(canvas.width, canvas.height, function (video) {
+        test(video);
+      })
+    }
+
+    let a = null;
+
+    function test(video) {
+      a = new AkazeExample(canvasId, video, imgId);
+      a.startTick();
+    }
+  </script>
+</head>
+
+<body style="margin:0; height: 100%; width:100%; overflow: hidden;">
+  <div id="canvas-wrapper" style="height: 100%; width: 100%;">
+    <canvas id="main-canvas" style="display: block;"></canvas>
+  </div>
+  <img id="img-sample" src="/images/hoge.jpg">
+</body>
+
+</html>
