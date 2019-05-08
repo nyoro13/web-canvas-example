@@ -11,6 +11,10 @@
     const imgId = 'img-sample';
     let canvas = null;
     window.onload = function () {
+      setTimeout(hoge, 5000);
+    }
+
+    function hoge() {
       canvas = document.querySelector('#' + canvasId);
       canvas.width = canvas.parentElement.offsetWidth;
       canvas.height = canvas.parentElement.offsetHeight;
